@@ -42,6 +42,7 @@ public class KruskalsALgo {
             int weight = sc.nextInt();
             Edge edge = new Edge(source, destination, weight);
             edges[i] = edge;
+            // this is for the github
         }
         Edge[] mst = kruskalsALgo(edges,v);
         for (int i = 0; i < mst.length; i++) {
