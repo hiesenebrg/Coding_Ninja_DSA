@@ -13,7 +13,8 @@ public class getPath {
         isboolean[v1] = true;
             for(int i = 0; i<adjMatrix.length;i++){
                     if(adjMatrix[v1][i]>0 && !isboolean[i]){
-                        ArrayList<Integer> arr = getpathhelperusingDFS(adjMatrix, v1, v2, isboolean);
+                        isboolean[v1] = true;
+                        ArrayList<Integer> arr = getpathhelperusingDFS(adjMatrix, i, v2, isboolean);
                         if(arr!=null){
                             arr.add(v1);
                             return arr;
@@ -30,9 +31,13 @@ public class getPath {
         boolean[] isVisited = new boolean[adjMatrix.length];
         HashMap<Integer, Integer> hs = new HashMap<>();
         ArrayList<Integer> ans = new ArrayList<>();
+        for(int i = 0;i<ans.size();i++){
+            ans.add(-1);
+        }
         Queue<Integer> q  = new LinkedList<>();
         q.add(v1);
         isVisited[v1] = true;
+        hs.put(v1, v1);
         while(!q.isEmpty()){
             int first = q.peek();
             q.poll();
@@ -72,7 +77,7 @@ public class getPath {
         int v1 = sc.nextInt();
         System.out.println("Enter the second vertex");
         int v2 = sc.nextInt();
-        // System.out.println(getpathusingDFS(adjMatrix,  v1 , v2));
-        System.out.println(getpathusingBFS(adjMatrix,v1,v2));
+        System.out.println(getpathusingDFS(adjMatrix,  v1 , v2));
+        // System.out.println(getpathusingBFS(adjMatrix,v1,v2));
     }
 }
